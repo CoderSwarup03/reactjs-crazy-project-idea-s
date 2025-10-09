@@ -17,7 +17,7 @@ export const CartProvider = ({ children }) => {
         );
       }
       return [...prev, { ...product, qty: 1 }];
-    });
+    });  
   };
 
   const removeFromCart = (id) => {
@@ -30,7 +30,7 @@ export const CartProvider = ({ children }) => {
 
   return (
     <CartContext.Provider
-      value={{ cart, addToCart, removeFromCart, clearCart, total0Price }}
+      value={{ cart, addToCart, removeFromCart, clearCart, totalPrice }}
     >
       {children}
     </CartContext.Provider>
