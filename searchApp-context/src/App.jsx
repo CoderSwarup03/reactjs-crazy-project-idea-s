@@ -4,10 +4,12 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Profile from './pages/Profile'
 import CartPage from './pages/CartPage'
+import LoginForm from './pages/LoginForm'
 
 const App = () => {
   const [cart, setCart] = useState([]);
   const [products, setProducts] = useState([])
+  const [user, setUser] = useState(null);
 
 
   const fetchProduct = async () => {
@@ -22,25 +24,50 @@ const App = () => {
   }, [])
 
 
+  const login = (username, password) => {
+    if (username === 'admin' && password === '12345') {
+      setUser({ username })
+      return
+    } else {
+      alert('Invalid username or password')
+      return
+    }
+  }
 
   const addToCart = (item) => {
     setCart([...cart, item])
     alert("Product added to cart")
   }
 
-  const deleteCart = (id) => {
-    setCart(cart.filter((item) => item.id !== id))
+  const logout = () => {
+    setUser(null)
+  }
+
+  const deleteCart = (product) => {
+    setCart(cart.filter((item) => item.id !== product.id))
     alert("Product removed from cart")
   }
 
   return (
     <>
-      <ContextProvider.Provider value={{ cart, addToCart, deleteCart, products }}>
+      <ContextProvider.Provider value={{ cart, addToCart, deleteCart, products, setProducts, login, logout, user, setUser }}>
         <BrowserRouter>
-          <Navbar />
+          {/* <LoginForm /> */}
           <Routes>
-                <Route path='/' element={<Profile />} />
-                <Route path='/cart' element={<CartPage />} />
+            {
+              user ? (
+                <>
+                  <Route path='/' element={<Navbar />} />
+                  <Route path='/' element={<Profile />} />
+                  <Route path='/cart' element={<CartPage />} />
+                </>
+              ) : (
+                <Route path='/' element={<LoginForm />} />
+              )
+            }
+            {/* <Route path='/' element={<Profile />} /> */}
+            {/* <Route path='/' element={<Navbar/>} /> */}
+            {/* <Route path='/cart' element={<CartPage />} /> */}
           </Routes>
         </BrowserRouter>
       </ContextProvider.Provider>

@@ -1,8 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-
+import ContextProvider from '../context/ContextProvider'
+import { useContext } from 'react'
 
 const Navbar = () => {
+    const [inputSeach, setInputSeach] = useState('')
+
+    const { setProducts } = useContext(ContextProvider)
+
+    const handleSeach = async () => {
+        const response = await fetch(`https://dummyjson.com/products/search?q=${inputSeach}`)
+        const data = await response.json();
+        console.log(data);
+        setProducts(data.products);
+    }
+
+
+
     return (
         <>
             <div className='bg-white p-3 max-w-[85%] mx-auto'>
@@ -10,10 +24,14 @@ const Navbar = () => {
                     <h1 className='text-2xl font-bold'>Search App</h1>
                     <div className='flex gap-3 justify-center items-center'>
                         <input
+                            value={inputSeach}
+                            onChange={(e) => setInputSeach(e.target.value)}
                             placeholder='Search Product...'
-                            className='p-3 border-2 border-green-500 rounded-md'
+                            className='p-3 border-2 border-green-500 rounded-md w-[300px]'
                             type="search" name="" id="" />
-                        <button className='bg-green-500 hover:bg-green-600 px-3 py-3 rounded-md font-bold cursor-pointer'>Search</button>
+                        <button
+                            onClick={handleSeach}
+                            className='bg-green-500 hover:bg-green-600 px-3 py-3 rounded-md font-bold cursor-pointer'>Search</button>
                     </div>
                     <div className='flex gap-3'>
                         <Link
