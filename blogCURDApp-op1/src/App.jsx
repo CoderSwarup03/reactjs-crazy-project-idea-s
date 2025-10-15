@@ -20,7 +20,7 @@ const App = () => {
   }
   return (
     <>
-      <div className='bg-gray-100  h-[100vh] w-[100vw] p-4'>
+      <div className='bg-gray-100 h-[100vh] w-[100vw] p-4'>
         <h1 className='text-3xl font-bold text-green-500 text-center'>BlogApp-CURD New</h1>
         <CreatePost onAddPost={addPost} />
         {selectedPost ? (

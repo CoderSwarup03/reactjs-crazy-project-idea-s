@@ -14,6 +14,7 @@ const EditPost = ({ post, onSave }) => {
       <div>
         <form
         onSubmit={handleSubmit}
+        className='flex flex-col gap-2 m-2'
         >
           <input
             value={title}
