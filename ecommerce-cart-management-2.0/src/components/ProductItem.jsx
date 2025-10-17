@@ -17,7 +17,7 @@ const ProductItem = ({ item }) => {
                     </div>
                     <div>
                         <button
-                            onClick={addToCart(item)}
+                            onClick={() => addToCart(item)}
                             className='bg-green-500 px-4 py-2 rounded-md font-semibold cursor-pointer text-lg'>Add Item</button>
                     </div>
                 </div>
