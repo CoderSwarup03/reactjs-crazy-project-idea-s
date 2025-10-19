@@ -42,7 +42,7 @@ const Cart = () => {
       </div>
       <HiShoppingCart
         onClick={() => setActiveCart(!activeCart)}
-        className='rounded-full p-2 bg-white text-[60px] border-2 border-green-500 cursor-pointer fixed bottom-4 right-4' />
+        className={`rounded-full p-2 bg-white text-[60px] border-2 border-green-500 cursor-pointer fixed bottom-4 right-4 ${totalQty > 0 && "animate-bounce delay-500 transition-all"}`} />
     </>
   )
 }
