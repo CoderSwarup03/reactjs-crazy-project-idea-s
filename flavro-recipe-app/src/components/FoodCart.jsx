@@ -23,6 +23,7 @@ const FoodCart = ({ item }) => {
                         onClick={() => dispatch(addToCart({
                             id: item.id,
                             name: item.name,
+                            img: item.img,
                             rating: item.rating,
                             price: item.price,
                             qty: item.qty = 1
