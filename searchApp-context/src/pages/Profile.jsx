@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import ConntexProvider from '../context/ContextProvider'
+import Navbar from '../components/Navbar'
 
 const Profile = () => {
 
@@ -7,6 +8,7 @@ const Profile = () => {
 
   return (
     <>
+      <Navbar />
       <div className='max-w-[85%] mx-auto bg-gray-100 p-3'>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3'>
           {

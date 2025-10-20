@@ -57,7 +57,6 @@ const App = () => {
             {
               user ? (
                 <>
-                  <Route path='/' element={<Navbar />} />
                   <Route path='/' element={<Profile />} />
                   <Route path='/cart' element={<CartPage />} />
                 </>

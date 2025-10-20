@@ -5,16 +5,18 @@ import { useSelector } from 'react-redux';
 
 const FoodItem = () => {
     const category = useSelector((state) => state.category.category);
+    const search = useSelector((state) => state.search.search);
+    console.log(search);
     return (
         <>
             <div className='max-w-[90%] md:max-w-[85%] mx-auto'>
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
                     {FoodData.filter((item) => {
-                        if (item.category === "All") {
-                            return item
+                        if (category === "All") {
+                            return item.name.toLowerCase().includes(search.toLowerCase())
                         } else {
-                            // return category === item.category
-                            return category.toLowerCase() === "all" || item.category.toLowerCase().includes(category.toLowerCase())
+                            return category === item.category && item.name.toLowerCase().includes(search.toLowerCase())
+                            
                         }
                     }).map((item) => (
                         <FoodCart key={item.id} item={item} />

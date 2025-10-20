@@ -6,7 +6,7 @@ import { useContext } from 'react'
 const Navbar = () => {
     const [inputSeach, setInputSeach] = useState('')
 
-    const { setProducts } = useContext(ContextProvider)
+    const { setProducts, logout } = useContext(ContextProvider)
 
     const handleSeach = async () => {
         const response = await fetch(`https://dummyjson.com/products/search?q=${inputSeach}`)
@@ -14,8 +14,6 @@ const Navbar = () => {
         console.log(data);
         setProducts(data.products);
     }
-
-
 
     return (
         <>
@@ -40,6 +38,10 @@ const Navbar = () => {
                         <Link
                             to={'/cart'}
                             className='px-3 py-3 border-2 border-green-600 rounded-md'>MyCart</Link>
+
+                        <button
+                            onClick={logout}
+                            className='text-2xl px-4 py2 bg-red-500 hover:bg-red-600 rounded-md font-semibold'>Logout</button>
                     </div>
                 </div>
             </div>
