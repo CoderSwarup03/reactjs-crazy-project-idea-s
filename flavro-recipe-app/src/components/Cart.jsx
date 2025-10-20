@@ -4,11 +4,12 @@ import { IoCloseSharp } from "react-icons/io5";
 import CartItem from './CartItem';
 import { useSelector } from 'react-redux';
 import { HiShoppingCart } from "react-icons/hi";
+
 const Cart = () => {
   const [activeCart, setActiveCart] = useState(true);
   const cartItems = useSelector((state) => state.cart.cart);
   const totalQty = cartItems.reduce((acc, item) => acc + item.qty, 0);
-  const totalPrice = cartItems.reduce((acc, item) => acc + item.price * item.qty, 0)
+  const totalPrice = cartItems.reduce((acc, item) => acc + item.price * item.qty, 0);
   console.log(cartItems);
   return (
     <>

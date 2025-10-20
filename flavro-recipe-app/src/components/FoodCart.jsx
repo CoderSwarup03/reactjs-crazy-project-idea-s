@@ -2,8 +2,11 @@ import React from 'react'
 import { FaStar } from "react-icons/fa";
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../slices/CartSlices';
+import { useSelector } from 'react-redux';
+
 const FoodCart = ({ item }) => {
     const dispatch = useDispatch();
+    const category =  useSelector((state) => state.category.category);
     return (
         <>
             <div className='flex flex-col justify-center items-center p-4 border-2 border-green-500 rounded-md'>
