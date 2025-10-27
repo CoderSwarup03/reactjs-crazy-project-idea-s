@@ -9,20 +9,18 @@ const LoginForm = () => {
     login(form.username, form.password);
   }
 
-
-
   return (
     <>
       <div className='absolute top-1/2 left-1/2 -transform -translate-x-1/2 -translate-y-1/2 flex flex-col justify-center items-center gap-3 border-2 border-green-500 rounded-md p-5'>
         <h1 className='text-bold text-3xl'>LoginForm</h1>
         <input
-          placeholder='username'
+          placeholder='enter username'
           value={form.username}
           onChange={(e) => setForm({ ...form, username: e.target.value })}
           className='p-3 w-full border-2 border-green-500 rounded-md outline-none'
           type="text" />
         <input
-          placeholder='password'
+          placeholder='enter password'
           value={form.password}
           onChange={(e) => setForm({ ...form, password: e.target.value })}
           className='p-3 w-full border-2 border-green-500 rounded-md outline-none'
