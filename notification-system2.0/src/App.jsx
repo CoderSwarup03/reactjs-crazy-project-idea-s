@@ -3,7 +3,7 @@ import MainApp from './components/MainApp'
 import NotificationList from './components/NotificationList'
 
 const App = () => {
-  return (
+  return ( 
     <>
       <MainApp />
       <NotificationList />
