@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from 'react'
 const RecipeContext = createContext();
-export const useRecipe = () => useContext(RecipeContext)
+export const useRecipe = () => useContext(RecipeContext);
 
 const RecipeProvider = ({ children }) => {
   const [recipe, setRecipe] = useState([]);
@@ -9,9 +9,12 @@ const RecipeProvider = ({ children }) => {
     setRecipe((item) => [...item, newItems])
   }
 
+  const deleteCart = (id) => {
+    setRecipe((item) => item.id !== id)
+  }
 
   return (
-    <RecipeContext.Provider value={{ addRecipe, recipe }}>
+    <RecipeContext.Provider value={{ addRecipe, recipe, deleteCart }}>
       {children}
     </RecipeContext.Provider>
   )
